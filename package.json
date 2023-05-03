@@ -1,0 +1,30 @@
+{
+  "name": "git-nuke",
+  "version": "1.0.0",
+  "description": "Nuke The Git History.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atom06/git-nuke.git"
+  },
+  "keywords": [
+    "clean",
+    "git",
+    "github",
+    "git-nuke",
+    "commit-history",
+    "erase",
+    "atom06",
+    "carbon"
+  ],
+  "author": "atom06",
+  "license": "carbon",
+  "bugs": {
+    "url": "https://github.com/atom06/git-nuke/issues"
+  },
+  "homepage": "https://github.com/atom06/git-nuke#readme",
+  "bin": "index.js"
+}

@@ -25,17 +25,11 @@ function run(command, args) {
 async function checkBranch() {
     return new Promise((resolve, reject) => {
         const runner = spawn('git', ['branch', '--show-current'], { stdio: 'pipe' });
-        let output = '';
-        runner.stdout.on('data', (data) => {
-            output += data;
-        });
         runner.on('error', (err) => {
             reject(err);
         });
         runner.on('exit', (code, signal) => {
-            if (code === 0) {
-                resolve(output.trim());
-            } else {
+            if (!code === 0) {
                 reject(new Error(`Command 'git branch --show-current' exited with code ${code} and signal ${signal}`));
             }
         });

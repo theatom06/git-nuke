@@ -1,4 +1,11 @@
 #!/usr/bin/env node
+
+/**
+ License: Carbon License (custom)
+ https://gist.github.com/atom06/6d520406e0d1d7612f29d31517888d90
+*/
+
+
 const path = require('path');
 const { spawn } = require('child_process');
 const { readFileSync } = require('fs');
@@ -26,7 +33,7 @@ async function checkBranch() {
     return new Promise((resolve, reject) => {
         const runner = spawn('git', ['branch', '--show-current'], { stdio: 'pipe' });
         runner.on('error', (err) => {
-            reject(err);
+            reject(err);g
         });
         runner.on('exit', (code, signal) => {
             if (!code === 0) {
@@ -38,11 +45,11 @@ async function checkBranch() {
 
 async function main() {
     const branch = await checkBranch();
-    await run('git', ['checkout', '--orphan', 'gclean']);
+    await run('git', ['checkout', '--orphan', 'gitnuke']);
     await run('git', ['add', '-A']);
     await run('git', ['commit', '-m', 'Cleaning up']);
     await run('git', ['branch', '-D', branch]);
-    await run('git', ['branch', '-m', branch]);
+    await run('git', ['branch', '-m', 'gitnuke', branch]);
     await run('git', ['push', '-f', 'origin', branch]);
     const t = Math.floor(process.uptime());
     const b = branch.substring(0, 6).padEnd(7, ' ');
